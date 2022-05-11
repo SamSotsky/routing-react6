@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, Routes, Link} from "react-router-dom"
+import DisplayWord from "./components/DisplayWord"
+import ColoredWord from "./components/ColoredWord"
+
 
 function App() {
+  
+  const Home = ()=>{
+    return(
+      <fieldset>
+        <legend> Heeelow, u are home! </legend>
+      </fieldset>
+    )
+  }
+
+  const Error = ()=>{
+    return(
+      <fieldset>
+        <legend> Error = L+Bozo, bot, fix KODE</legend>
+      </fieldset>
+    )
+  }
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <h1> V6 Router </h1>
+
+  
+    <Routes>
+      <Route path="/home" element={<Home />} />
+      <Route path="/:keyword" element={<DisplayWord />} />
+      <Route path="/:word/:color" element={<ColoredWord />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
